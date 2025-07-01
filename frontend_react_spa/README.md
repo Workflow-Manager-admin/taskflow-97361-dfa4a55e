@@ -5,18 +5,16 @@ A modern, responsive React Single Page Application for task management with intu
 ## 🚀 Features
 
 ### Core Functionality
-- **User Authentication**: Secure login/register with JWT tokens
 - **Kanban Board**: Drag-and-drop task management across columns (To Do, In Progress, Done)
 - **Task Management**: Create, edit, delete, and move tasks between columns
 - **Real-time Updates**: Seamless API integration with backend
 - **Responsive Design**: Mobile-first approach with tablet and desktop optimization
+- **Open Access**: No authentication required - accessible to all users
 
 ### Technical Features
 - **Modern React**: Built with React 18+ and functional components
-- **Context API**: Centralized authentication state management
-- **Protected Routes**: Route-level authentication guards
 - **Drag & Drop**: Smooth drag-and-drop using @dnd-kit library
-- **HTTP Client**: Axios for API communication with interceptors
+- **HTTP Client**: Axios for API communication
 - **Error Handling**: Comprehensive error states and user feedback
 - **Loading States**: User-friendly loading indicators throughout
 
@@ -92,6 +90,8 @@ TaskVerse uses a carefully selected color palette:
    ```
    
    The app will be available at [http://localhost:3000](http://localhost:3000)
+   
+   The Kanban board will load directly - no login required!
 
 ### Build for Production
 
@@ -106,34 +106,19 @@ This creates an optimized production build in the `build/` folder.
 ```
 src/
 ├── components/          # Reusable UI components
-│   ├── Header.js       # Navigation header with user menu
+│   ├── Header.js       # Navigation header with branding
 │   ├── KanbanBoard.js  # Main Kanban board with drag-drop
 │   ├── TaskCard.js     # Individual task display
 │   ├── TaskModal.js    # Task creation/editing modal
-│   ├── SortableTaskCard.js # Drag-enabled task wrapper
-│   └── ProtectedRoute.js   # Route protection component
-├── contexts/           # React context providers
-│   └── AuthContext.js  # Authentication state management
+│   └── SortableTaskCard.js # Drag-enabled task wrapper
 ├── pages/              # Page-level components
-│   ├── Login.js        # User login page
-│   ├── Register.js     # User registration page
 │   ├── Dashboard.js    # Main dashboard with Kanban
-│   ├── Auth.css        # Shared authentication styles
 │   └── Dashboard.css   # Dashboard-specific styles
-├── App.js              # Main app component with routing
+├── App.js              # Main app component
 ├── App.css             # Global styles and theme variables
 ├── index.js            # React app entry point
 └── index.css           # Global CSS reset and base styles
 ```
-
-## 🔐 Authentication Flow
-
-1. **Registration**: Users create account with name, email, password
-2. **Login**: Email/password authentication returns JWT token
-3. **Token Storage**: JWT stored in localStorage with automatic headers
-4. **Route Protection**: Protected routes redirect to login if unauthenticated
-5. **Auto-login**: Token validation on app startup for seamless experience
-6. **Logout**: Clear token and redirect to login
 
 ## 📋 Task Management
 
@@ -154,17 +139,13 @@ src/
 ## 🎯 API Integration
 
 ### Endpoints Used
-- `POST /api/register` - User registration
-- `POST /api/login` - User authentication
-- `GET /api/me` - Get current user profile
-- `GET /api/tasks` - Fetch user tasks and columns
+- `GET /api/tasks` - Fetch tasks and columns
 - `POST /api/tasks` - Create new task
 - `PUT /api/tasks/:id` - Update existing task
 - `DELETE /api/tasks/:id` - Delete task
 - `PUT /api/tasks/order` - Update task position/column
 
 ### Request/Response Handling
-- **Axios Interceptors**: Automatic JWT token attachment
 - **Error Handling**: User-friendly error messages
 - **Loading States**: Visual feedback during API calls
 - **Retry Logic**: Automatic retry for failed requests

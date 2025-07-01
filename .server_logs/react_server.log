@@ -22,3 +22,32 @@ Note that the development build is not optimized.
 To create a production build, use npm run build.
 
 webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/pages/Dashboard.js
+  Line 94:21:   'user' is not defined  no-undef
+  Line 107:31:  'user' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/pages/Dashboard.js
+  Line 94:21:   'user' is not defined  no-undef
+  Line 107:31:  'user' is not defined  no-undef
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully
+Compiling...
+Compiled successfully!
+webpack compiled successfully

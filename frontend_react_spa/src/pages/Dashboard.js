@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useAuth } from '../contexts/AuthContext';
 import KanbanBoard from '../components/KanbanBoard';
 import Header from '../components/Header';
 import TaskModal from '../components/TaskModal';
@@ -11,8 +10,8 @@ const Dashboard = () => {
   /**
    * Main dashboard component that displays the Kanban board
    * Manages tasks, columns, and modal states
+   * No authentication required - accessible to all users
    */
-  const { user } = useAuth();
   const [columns, setColumns] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -92,7 +91,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <Header user={user} />
+      <Header />
       
       <main className="dashboard-main">
         {error && (
@@ -104,8 +103,8 @@ const Dashboard = () => {
         
         <div className="dashboard-content">
           <div className="dashboard-header">
-            <h1>My Tasks</h1>
-            <p>Welcome back, {user?.name}! Manage your tasks efficiently.</p>
+            <h1>Task Management</h1>
+            <p>Organize and manage your tasks efficiently with our Kanban board.</p>
           </div>
           
           <KanbanBoard
