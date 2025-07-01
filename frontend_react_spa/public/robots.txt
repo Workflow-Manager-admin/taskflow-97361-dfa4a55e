@@ -1,3 +1,10 @@
-# https://www.robotstxt.org/robotstxt.html
+# TaskVerse - Allow all web crawlers
 User-agent: *
-Disallow:
+Allow: /
+
+# Disallow admin or sensitive areas (if any in future)
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://taskverse.app/sitemap.xml

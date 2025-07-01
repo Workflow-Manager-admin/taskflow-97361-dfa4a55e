@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "TaskVerse",
+  "name": "TaskVerse - Task Management Made Simple",
+  "description": "Organize your tasks with intuitive Kanban boards. Drag, drop, and manage your workflow efficiently.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,23 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2563eb",
+  "background_color": "#f8fafc",
+  "orientation": "portrait-primary",
+  "categories": ["productivity", "business", "utilities"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "shortcuts": [
+    {
+      "name": "New Task",
+      "url": "/?action=new-task",
+      "description": "Create a new task quickly"
+    },
+    {
+      "name": "Dashboard",
+      "url": "/",
+      "description": "View your task dashboard"
+    }
+  ]
 }

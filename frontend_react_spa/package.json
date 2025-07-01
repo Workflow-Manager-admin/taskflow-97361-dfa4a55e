@@ -1,11 +1,21 @@
 {
-  "name": "react-kavia",
-  "version": "0.1.0",
+  "name": "taskverse-frontend",
+  "version": "1.0.0",
   "private": true,
+  "description": "TaskVerse - Modern task management with Kanban board interface",
+  "keywords": ["react", "kanban", "task-management", "productivity", "drag-drop"],
+  "author": "TaskVerse Team",
+  "homepage": ".",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "react-router-dom": "^6.8.0",
+    "axios": "^1.6.0",
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
+    "@dnd-kit/modifiers": "^6.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
