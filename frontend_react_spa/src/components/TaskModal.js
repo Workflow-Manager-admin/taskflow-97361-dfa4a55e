@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import './TaskModal.css';
 
 // PUBLIC_INTERFACE
 const TaskModal = ({ task, columnId, columns, onClose, onSave }) => {
   /**
-   * Modal component for creating and editing tasks
+   * Modal component for creating and editing tasks using local storage
    * @param {Object} task - Task object (null for new task)
    * @param {number} columnId - Column ID for new tasks
    * @param {Array} columns - Available columns
    * @param {Function} onClose - Callback to close modal
-   * @param {Function} onSave - Callback after save
+   * @param {Function} onSave - Callback after save with task data
    */
   const [formData, setFormData] = useState({
     title: '',
@@ -50,25 +49,24 @@ const TaskModal = ({ task, columnId, columns, onClose, onSave }) => {
     setError('');
 
     try {
-      const payload = {
-        title: formData.title,
-        description: formData.description || null,
-        priority: formData.priority,
-        due_date: formData.due_date ? new Date(formData.due_date).toISOString() : null,
-        column_id: formData.column_id
-      };
-
-      if (isEdit) {
-        await axios.put(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/tasks/${task.id}`, payload);
-      } else {
-        await axios.post(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/tasks`, payload);
+      // Validate form data
+      if (!formData.title.trim()) {
+        throw new Error('Task title is required');
       }
 
-      onSave();
+      const taskData = {
+        title: formData.title.trim(),
+        description: formData.description.trim() || '',
+        priority: formData.priority,
+        due_date: formData.due_date ? new Date(formData.due_date).toISOString() : null,
+        column_id: parseInt(formData.column_id)
+      };
+
+      // Call the parent's save handler with the task data
+      onSave(taskData);
     } catch (error) {
-      console.error('Error saving task:', error);
-      setError(error.response?.data?.message || 'Failed to save task. Please try again.');
-    } finally {
+      console.error('Error preparing task data:', error);
+      setError(error.message || 'Failed to save task. Please try again.');
       setLoading(false);
     }
   };

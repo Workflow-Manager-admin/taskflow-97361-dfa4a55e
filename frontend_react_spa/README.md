@@ -7,16 +7,18 @@ A modern, responsive React Single Page Application for task management with intu
 ### Core Functionality
 - **Kanban Board**: Drag-and-drop task management across columns (To Do, In Progress, Done)
 - **Task Management**: Create, edit, delete, and move tasks between columns
-- **Real-time Updates**: Seamless API integration with backend
+- **Local Storage**: All data persisted in browser local storage - no backend required
+- **Data Export/Import**: Export tasks as JSON backup and clear all data functionality
 - **Responsive Design**: Mobile-first approach with tablet and desktop optimization
 - **Open Access**: No authentication required - accessible to all users
 
 ### Technical Features
 - **Modern React**: Built with React 18+ and functional components
 - **Drag & Drop**: Smooth drag-and-drop using @dnd-kit library
-- **HTTP Client**: Axios for API communication
+- **Local Storage**: Client-side data persistence using browser local storage
+- **Data Management**: Complete CRUD operations handled locally
 - **Error Handling**: Comprehensive error states and user feedback
-- **Loading States**: User-friendly loading indicators throughout
+- **Data Export**: JSON export functionality for backup purposes
 
 ### Design & UX
 - **TaskVerse Branding**: Consistent color scheme (#2563eb, #64748b, #22d3ee)
@@ -136,20 +138,22 @@ src/
 - **Keyboard Support**: Arrow keys and Enter for accessibility
 - **Mobile Touch**: Touch-friendly drag and drop on mobile devices
 
-## 🎯 API Integration
+## 🎯 Local Data Management
 
-### Endpoints Used
-- `GET /api/tasks` - Fetch tasks and columns
-- `POST /api/tasks` - Create new task
-- `PUT /api/tasks/:id` - Update existing task
-- `DELETE /api/tasks/:id` - Delete task
-- `PUT /api/tasks/order` - Update task position/column
+### Storage Operations
+- **Initialize**: Create default columns on first load
+- **Create Task**: Add new tasks to specified columns
+- **Update Task**: Modify existing task properties
+- **Delete Task**: Remove tasks and reorder positions
+- **Move Task**: Drag and drop tasks between columns
+- **Export Data**: Download all data as JSON backup
+- **Clear Data**: Reset to default empty state
 
-### Request/Response Handling
-- **Error Handling**: User-friendly error messages
-- **Loading States**: Visual feedback during API calls
-- **Retry Logic**: Automatic retry for failed requests
-- **Response Validation**: Type checking and data validation
+### Local Storage Service
+- **Persistent Storage**: All data saved in browser local storage
+- **Data Validation**: Type checking and structure validation
+- **Error Handling**: Graceful fallback to default state
+- **Auto-recovery**: Initialize with defaults if storage corrupted
 
 ## 🎨 Styling Architecture
 
